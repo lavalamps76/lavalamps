@@ -44,3 +44,52 @@
 
 </body>
 </html>
+<?php
+// Path to the file where visitor count is stored
+$filename = "visitor_count.txt";
+
+// Check if the file exists, if not, create it
+if (!file_exists($filename)) {
+    file_put_contents($filename, 0);  // Initialize visitor count to 0
+}
+
+// Read the current visitor count
+$visitorCount = (int) file_get_contents($filename);
+
+// Increment the visitor count
+$visitorCount++;
+
+// Save the updated count back to the file
+file_put_contents($filename, $visitorCount);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Count</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .count-box {
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to our Website!</h1>
+    <div class="count-box">
+        <p>Number of visitors: <?php echo $visitorCount; ?></p>
+    </div>
+
+</body>
+</html>
